@@ -187,7 +187,7 @@ app.put('/contact/updateContact/:id/:data_store', async (req, res) => {
  
         else if( data_store == 'DATABASE')
         {
-                const deleteQuery = 'DELETE contacts where id=?'
+                const deleteQuery = 'DELETE FROM contacts where id=?'
                 db.query(deleteQuery, [id] , async (err, result) =>
                 {
                     if(err)
@@ -199,7 +199,7 @@ app.put('/contact/updateContact/:id/:data_store', async (req, res) => {
                     {
                         if (result.affectedRows > 0) 
                         {
-                            console.log('Contact Updated MySQL database');
+                            console.log('Contact deleted in MySQL database');
                             res.status(200).json(result[0]);
                         } 
                     }
